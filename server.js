@@ -11,7 +11,7 @@ app.use(express.json());
 
 app.use(routes);
 
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/rocksFall");
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/hookScrape");
 mongoose.set('useFindAndModify', false);
 app.listen(PORT, function() {
     console.log(
