@@ -1,16 +1,6 @@
-const scraper = require("../scraper/redditScrape");
+const scraper = require("../controller/redditScrape");
+const router = require("express").Router();
 module.exports = (app) => {
-    app.get("/scrape", (req, res) =>{
-        console.log(`******************************************
-                     *                SCRAPING                *
-                     ******************************************`);
-        scraper.scrape("https://old.reddit.com/r/todayilearned", result => {
-            if( result === "200") {
-                console.log(`******************************************
-                             *                  DONE                  *
-                             ******************************************`);
-                res.sendStatus("200");
-            }
-        }); 
-    });
+    router.route("/scrape").post(scraper.scrape);
+        
 }

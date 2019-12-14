@@ -2,8 +2,8 @@ const axios = require("axios");
 const cheerio = require("cheerio");
 const db = require("../db");
 module.exports = {
-    scrape: async (url, callback) => {
-        let response = await axios.get(url);
+    scrape: async (req, res) => {
+        let response = await axios.get(req.body.url);
         if (response) {
             let $ = cheerio.load(response.data);
             let counter = 0;
@@ -31,7 +31,7 @@ module.exports = {
                     let result = await db.ScrapedPost.create(item);
                     if (result) {
                         if (counter === ($("div.thing").length - 1)) { //iterates over elements and performs callback when needed
-                            callback("200");
+                            res.sendStatus("200");
                         } else {
                             counter++;
                         }
@@ -39,7 +39,7 @@ module.exports = {
                     } 
                 } catch {
                     if (counter === ($("div.thing").length - 1)) {
-                        callback("200");
+                        res.sendStatus("200");
                     } else {
                         counter++;
                     }
