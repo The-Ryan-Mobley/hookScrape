@@ -1,9 +1,11 @@
 const axios = require("axios");
 const cheerio = require("cheerio");
-const db = require("../db");
+const db = require("../models");
 module.exports = {
     scrape: async (req, res) => {
-        let response = await axios.get(req.body.url);
+        console.log("ayy lamo");
+        console.log(req.query[0]);
+        let response = await axios.get(req.query[0]);
         if (response) {
             let $ = cheerio.load(response.data);
             let counter = 0;
@@ -25,8 +27,10 @@ module.exports = {
                     karma,
                     author,
                     thumbnail,
-                    discussion
+                    discussion,
+                    subReddit: req.query[0]
                 };
+                console.log(item);
                 try {
                     let result = await db.ScrapedPost.create(item);
                     if (result) {

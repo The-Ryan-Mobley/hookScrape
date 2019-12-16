@@ -34,6 +34,11 @@ let ScrapedPostSchema = new Schema({
         trim: true,
         required: "need a valid url"
     },
+    subReddit : {
+        type: String,
+        trim: true,
+        required: "need subreddit to identify"
+    },
     DateScraped: {
         type: Date,
         default: Date.now,

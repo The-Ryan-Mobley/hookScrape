@@ -1,6 +1,6 @@
-const scraper = require("../controller/redditScrape");
+const scraper = require("../../controller/redditScrape");
 const router = require("express").Router();
-module.exports = (app) => {
-    router.route("/").post(scraper.scrape);
+
+router.route("/").get(scraper.scrape);
         
-}
+module.exports = router;
