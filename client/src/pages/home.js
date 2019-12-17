@@ -1,26 +1,44 @@
-import React, { useState, useEffect  } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Box from '@material-ui/core/Box';
 import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
 import api from "../utils/api/api";
 
 import Wrapper from "../components/wrapper";
+import Post from "../components/post";
 
 export default function Home(props){
-    const [post, setPost] = useState(0);
+    const [scrapedPost, setPost] = useState([]);
     useEffect(()=> {
-        api.scrape("http://old.reddit.com/r/todayilearned").then((re) => {
-            console.log(re);
-            api.getPosts("http://old.reddit.com/r/todayilearned").then(query => {
-                console.log("CALLED IT");
-                console.log(query);
+        const scrapeAndSet = async () => {
+            const result = await api.scrape("http://old.reddit.com/r/todayilearned");
+            if(result){
+                const query = await api.getPosts("http://old.reddit.com/r/todayilearned");
+                if(query){
+                    console.log("CALLED IT");
 
-            });
+                    setPost(query.data);
+                    
+                }
+                
+            }
 
-        });
-    })
+
+        }
+        scrapeAndSet();
+        
+    }, []);
     return (
-        <Wrapper
-        />
+        <Wrapper>
+            <Grid container>
+                {scrapedPost.length ? (
+                    scrapedPost.map(i => (
+                        <Post
+                            title = {i.title}
+                        />
+                    ))
+                ) : (<p></p>)}
+            </Grid>
+        </Wrapper>
     )
 }
