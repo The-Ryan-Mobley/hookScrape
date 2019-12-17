@@ -11,6 +11,11 @@ export default function Home(props){
     useEffect(()=> {
         api.scrape("http://old.reddit.com/r/todayilearned").then((re) => {
             console.log(re);
+            api.getPosts("http://old.reddit.com/r/todayilearned").then(query => {
+                console.log("CALLED IT");
+                console.log(query);
+
+            });
 
         });
     })

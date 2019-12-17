@@ -3,8 +3,7 @@ const cheerio = require("cheerio");
 const db = require("../models");
 module.exports = {
     scrape: async (req, res) => {
-        console.log("ayy lamo");
-        console.log(req.query[0]);
+        console.log("????????");
         let response = await axios.get(req.query[0]);
         if (response) {
             let $ = cheerio.load(response.data);
@@ -30,7 +29,6 @@ module.exports = {
                     discussion,
                     subReddit: req.query[0]
                 };
-                console.log(item);
                 try {
                     let result = await db.ScrapedPost.create(item);
                     if (result) {
