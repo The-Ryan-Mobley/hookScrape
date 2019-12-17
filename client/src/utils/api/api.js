@@ -5,6 +5,6 @@ export default {
     },
     getPosts: (sub) => {
         console.log("YOYOYO");
-        return axios.get("/api/postRoute/posts", {params: sub})
+        return axios.get("/api/postRoute/", {params: sub})
     }
 }
