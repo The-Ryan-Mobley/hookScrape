@@ -15,10 +15,8 @@ export default function Home(props){
             if(result){
                 const query = await api.getPosts("http://old.reddit.com/r/todayilearned");
                 if(query){
-                    console.log("CALLED IT");
-
                     setPost(query.data);
-                    
+                    console.log(query.data);
                 }
                 
             }
@@ -34,7 +32,8 @@ export default function Home(props){
                 {scrapedPost.length ? (
                     scrapedPost.map(i => (
                         <Post
-                            title = {i.title}
+                            key={i._id}
+                            data={i}
                         />
                     ))
                 ) : (<p></p>)}
