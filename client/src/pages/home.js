@@ -10,21 +10,14 @@ import Post from "../components/post";
 export default function Home(props){
     const [scrapedPost, setPost] = useState([]);
     useEffect(()=> {
-        const scrapeAndSet = async () => {
-            const result = await api.scrape("http://old.reddit.com/r/todayilearned");
-            if(result){
-                const query = await api.getPosts("http://old.reddit.com/r/todayilearned");
-                if(query){
-                    setPost(query.data);
-                    console.log(query.data);
-                }
-                
+        const queryPost = async () => {
+            const query = await api.getPosts("http://old.reddit.com/r/todayilearned");
+            if(query){
+                setPost(query.data);
+                console.log(query.data);
             }
-
-
         }
-        scrapeAndSet();
-        
+        queryPost();
     }, []);
     return (
         <Wrapper>
