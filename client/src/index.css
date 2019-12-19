@@ -5,9 +5,39 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  max-width: 100%;
+  overflow-x: hidden;
+  background-color: #FF9A00;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+.modalBody {
+
+  width: 80%;
+  background-color: #ffffff;
+  padding: 1%;
+}
+.thumbnail{
+  max-width: 100%;
+  max-height: auto;
+}
+.postBody{
+  border-radius: 15px 50px 30px 5px;
+  border-style: solid;
+  border-width: 1%;
+  border-color: rgb(1, 128, 179, 0.5);
+  margin-bottom: 1%;
+  width: 100%;
+  background-color: #ffffff;
+  padding: 1%;
+}
+.shadowed {
+  box-shadow: 2px 2px 0 0 rgb(127, 127, 127, 0.5);
+}
+
+.shadowed-btn {
+  box-shadow: 2px 2px 0 0 rgb(127, 127, 127, 0.5);
 }

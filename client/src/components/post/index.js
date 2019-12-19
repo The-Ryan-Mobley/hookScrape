@@ -5,6 +5,12 @@ import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
 
 export default function Post(props){
+    const sendToThread = () => {
+        window.location = props.data.discussion;
+    }
+    const openModal = () => {
+        props.modalToggle(props.data._id);
+    }
     return (
         <Grid container item direction="row-reverse">
             <Grid item xs={12} md={10}>
@@ -31,8 +37,8 @@ export default function Post(props){
             </Grid>
             <Grid item xs={12} md={10}>
                 <div class="button-group">
-                    <Button>View Thread</Button>
-                    <Button>Comments</Button>
+                    <Button onClick={sendToThread}>View Thread</Button>
+                    <Button name={props.data._id} onClick={openModal}>Comments</Button>
                 </div>
             </Grid>
             
