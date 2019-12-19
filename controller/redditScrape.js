@@ -17,7 +17,7 @@ module.exports = {
                 let thumbnail = $(element).find("img").attr("src")
                 let discussion = $(element).find(".comments").attr("href");
                 if (!thumbnail) {
-                    thumbnail = `/assets/images/notfound.png`;
+                    thumbnail = `/notfound.png`;
                 }
 
                 let item = {

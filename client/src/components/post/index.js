@@ -24,6 +24,7 @@ export default function Post(props){
                         alt="reddit-icon" 
                         className="thumbnail shadowed"
                     />
+                    <p className="karma">karma: {props.data.karma}</p>
 
                 </div>
                 
@@ -31,7 +32,6 @@ export default function Post(props){
             <Grid item xs={12} md={10}>
                 <div class="button-group">
                     <Button>View Thread</Button>
-                    <Button>Leave Comment</Button>
                     <Button>Comments</Button>
                 </div>
             </Grid>
