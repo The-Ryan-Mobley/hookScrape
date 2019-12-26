@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 let CommentsSchema = new Schema({
-    username :{
+    userName :{
         type: String,
         trim: true,
         required: "need user"

@@ -26,10 +26,16 @@ export default function Home(props){
         }
         queryPost();
     }, []);
+    useEffect(()=>{
+        if(postId.length) {
+            console.log(postId);
+            setModal(!modalFlag);
+        }
+    },[postId])
     const ModalToggle = (id) => {
-        setPostId(id);
-        setModal(!modalFlag);
+        setPostId(id);   
     }
+    
     return (
         <Wrapper>
             <Grid container>
@@ -59,7 +65,10 @@ export default function Home(props){
                     }}
                 >
                     <Fade in={modalFlag}>
-                        <CommentModal id = {postId}/>        
+                        <CommentModal 
+                            id = {postId}
+                            modalToggle = {ModalToggle}
+                        />        
                     </Fade>
                 </Modal>
             </Grid>

@@ -7,9 +7,11 @@ export default function Wrapper(props){
     return(
         <Box>
             <div className="wrapper">
-                <Grid container direction="row">
-                    <h1>Top Text</h1>
-                </Grid>
+                <header>
+                    <Grid container direction="row">
+                        <h1 className="title">Hook Scrape</h1>
+                    </Grid>
+                </header>
                 <Container>
                     {props.children}
                 </Container>
