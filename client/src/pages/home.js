@@ -29,11 +29,16 @@ export default function Home(props){
     useEffect(()=>{
         if(postId.length) {
             console.log(postId);
-            setModal(!modalFlag);
+            
         }
     },[postId])
     const ModalToggle = (id) => {
-        setPostId(id);   
+        setPostId(id);
+        setModal(!modalFlag);  
+    }
+    const closeToggle = () => {
+        setPostId("");
+        setModal(!modalFlag); 
     }
     
     return (
@@ -57,7 +62,7 @@ export default function Home(props){
                     className="sheetModal"
                     name="sheetModal"
                     open={modalFlag}
-                    onClose={ModalToggle}
+                    onClose={closeToggle}
                     closeAfterTransition
                     BackdropComponent={Backdrop}
                     BackdropProps={{

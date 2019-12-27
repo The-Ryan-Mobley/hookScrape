@@ -7,21 +7,23 @@ import api from "../../utils/api/api";
 
 export default function ViewComment(props){
     const [comments, setComments] = useState([]);
-    useEffect(async ()=> {
-        const result = await api.getComments(props.id)
-        if(result){
-            setComments(result);
+    useEffect( ()=> {
+        const queryComments = async () => {
+            const result = await api.getComments(props.id)
+            if(result){
+                setComments(result);
+            }
         }
-        
+        queryComments();
     }, []);
     const closeModal = () => {
-        props.modalToggle(props.id);
+        props.modalToggle("");
     }
     return (
         <Grid item container xs={12} direction="column">
             <div className="modalBody">
             <Grid item xs={12} direction="row-reverse">
-                <Button onclick={closeModal}>X</Button>
+                <Button onClick={closeModal}>X</Button>
             </Grid>
             
             <Grid item xs={12}>
