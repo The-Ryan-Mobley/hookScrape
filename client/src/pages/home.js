@@ -72,7 +72,7 @@ export default function Home(props){
                     <Fade in={modalFlag}>
                         <CommentModal 
                             id = {postId}
-                            modalToggle = {ModalToggle}
+                            closeToggle = {closeToggle}
                         />        
                     </Fade>
                 </Modal>

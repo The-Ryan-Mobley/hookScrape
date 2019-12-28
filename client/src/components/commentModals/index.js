@@ -7,6 +7,7 @@ import api from "../../utils/api/api";
 
 export default function ViewComment(props){
     const [comments, setComments] = useState([]);
+    const [newComment, newInput] = useState({name: "", body: "", postId: props.id})
     useEffect( ()=> {
         const queryComments = async () => {
             const result = await api.getComments(props.id)
@@ -17,7 +18,26 @@ export default function ViewComment(props){
         queryComments();
     }, []);
     const closeModal = () => {
-        props.modalToggle("");
+        props.closeToggle();
+    }
+    const inputChangeHandler = (event) => {
+        newInput({
+            ...newComment,
+            [event.target.name]: event.target.value
+        });
+        console.log(newComment);
+    }
+    const submitComment = async () => {
+        const result = await api.postComment(newComment);
+        if(result) {
+            newInput({
+                name: "",
+                body: ""
+            })
+
+        } else {
+            console.log("ERRRRRRR");
+        }
     }
     return (
         <Grid item container xs={12} direction="column">
@@ -34,6 +54,8 @@ export default function ViewComment(props){
                     fullWidth={true}
                     margin="normal"
                     variant="filled"
+                    name="name"
+                    onChange={inputChangeHandler}
                 />
             </Grid>
             <Grid item xs={12}>
@@ -46,8 +68,11 @@ export default function ViewComment(props){
                     fullWidth={true}
                     margin="normal"
                     variant="filled"
+                    name="body"
+                    onChange={inputChangeHandler}
                 />
             </Grid>
+            <Button onClick={submitComment}>Post</Button>
             <Grid item xs={12}>
                 {comments.length ? (comments.map(comment => (
                     <div className="comment">
