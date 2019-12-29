@@ -8,15 +8,16 @@ import api from "../../utils/api/api";
 export default function ViewComment(props){
     const [comments, setComments] = useState([]);
     const [newComment, newInput] = useState({name: "", body: "", postId: props.id})
-    useEffect( ()=> {
-        const queryComments = async () => {
-            const result = await api.getComments(props.id)
-            if(result){
-                setComments(result);
-            }
+    const queryComments = async () => {
+        const result = await api.getComments(props.id)
+        if(result){
+            setComments(result.data);
         }
+    }
+    useEffect( ()=> {
         queryComments();
     }, []);
+    
     const closeModal = () => {
         props.closeToggle();
     }
@@ -33,7 +34,8 @@ export default function ViewComment(props){
             newInput({
                 name: "",
                 body: ""
-            })
+            });
+            queryComments();
 
         } else {
             console.log("ERRRRRRR");
@@ -50,7 +52,7 @@ export default function ViewComment(props){
                 <TextField
                     id="standard-multiline-static"
                     label="Name*"
-                    defaultValue="Default Value"
+                    defaultValue=""
                     fullWidth={true}
                     margin="normal"
                     variant="filled"
@@ -64,7 +66,7 @@ export default function ViewComment(props){
                     label="Comment*"
                     multiline
                     rows="5"
-                    defaultValue="Default Value"
+                    defaultValue=""
                     fullWidth={true}
                     margin="normal"
                     variant="filled"
