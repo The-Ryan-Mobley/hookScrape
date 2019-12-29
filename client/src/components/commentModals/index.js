@@ -79,8 +79,8 @@ export default function ViewComment(props){
                 {comments.length ? (comments.map(comment => (
                     <div className="comment">
                         <Grid item container xs={12} direction = "column">
-                            <p>{comment.userName}</p>
-                            <p>{comment.body}</p>
+                            <p><strong>{comment.userName}:</strong><br/>
+                            {comment.body}</p>
                         </Grid>
                     </div>
                 ))) : (<p></p>)}
