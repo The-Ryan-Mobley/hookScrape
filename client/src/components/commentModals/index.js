@@ -4,10 +4,13 @@ import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 
 import api from "../../utils/api/api";
+import { STATES } from 'mongoose';
 
 export default function ViewComment(props){
     const [comments, setComments] = useState([]);
     const [newComment, newInput] = useState({name: "", body: "", postId: props.id})
+    const [errorMessage, setError] = useState("");
+
     const queryComments = async () => {
         const result = await api.getComments(props.id)
         if(result){
@@ -38,16 +41,17 @@ export default function ViewComment(props){
             queryComments();
 
         } else {
-            console.log("ERRRRRRR");
+            setError("Something went wrong");
         }
     }
     return (
         <Grid item container xs={12} direction="column">
             <div className="modalBody">
-            <Grid item xs={12} direction="row-reverse">
+            <Grid item container xs={12} direction="row-reverse">
                 <Button onClick={closeModal}>X</Button>
             </Grid>
-            
+
+            {errorMessage.length ? (<p>{errorMessage}</p>) : (<p></p>)}
             <Grid item xs={12}>
                 <TextField
                     id="standard-multiline-static"
@@ -74,7 +78,7 @@ export default function ViewComment(props){
                     onChange={inputChangeHandler}
                 />
             </Grid>
-            <Button onClick={submitComment}>Post</Button>
+            <Button onClick={submitComment} disabled={newComment.name, newComment.body}>Post</Button>
             <Grid item xs={12}>
                 {comments.length ? (comments.map(comment => (
                     <div className="comment">
