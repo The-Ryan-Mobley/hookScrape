@@ -50,32 +50,12 @@ export default function Home(props){
                             <Post
                                 key={i._id}
                                 data={i}
-                                modalToggle = {ModalToggle}
                             />
                         </div>
                     ))
                 ) : (<p></p>)}
 
-                <Modal
-                    aria-labelledby="transition-modal-title"
-                    aria-describedby="transition-modal-description"
-                    className="sheetModal"
-                    name="sheetModal"
-                    open={modalFlag}
-                    onClose={closeToggle}
-                    closeAfterTransition
-                    BackdropComponent={Backdrop}
-                    BackdropProps={{
-                      timeout: 100,
-                    }}
-                >
-                    <Fade in={modalFlag}>
-                        <CommentModal 
-                            id = {postId}
-                            closeToggle = {closeToggle}
-                        />        
-                    </Fade>
-                </Modal>
+                
             </Grid>
         </Wrapper>
     )

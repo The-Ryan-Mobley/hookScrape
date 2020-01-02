@@ -6,20 +6,11 @@ import TextField from '@material-ui/core/TextField';
 import api from "../../utils/api/api";
 import { STATES } from 'mongoose';
 
-export default function ViewComment(props){
-    const [comments, setComments] = useState([]);
+export default function PostComment(props){
     const [newComment, newInput] = useState({name: "", body: "", postId: props.id})
     const [errorMessage, setError] = useState("");
+    
 
-    const queryComments = async () => {
-        const result = await api.getComments(props.id)
-        if(result){
-            setComments(result.data);
-        }
-    }
-    useEffect( ()=> {
-        queryComments();
-    }, []);
     
     const closeModal = () => {
         props.closeToggle();
@@ -79,17 +70,6 @@ export default function ViewComment(props){
                 />
             </Grid>
             <Button onClick={submitComment} disabled={newComment.name, newComment.body}>Post</Button>
-            <Grid item xs={12}>
-                {comments.length ? (comments.map(comment => (
-                    <div className="comment">
-                        <Grid item container xs={12} direction = "column">
-                            <p><strong>{comment.userName}:</strong><br/>
-                            {comment.body}</p>
-                        </Grid>
-                    </div>
-                ))) : (<p></p>)}
-
-            </Grid>
             </div>
         </Grid>
     )

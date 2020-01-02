@@ -1,15 +1,17 @@
 import React, { useState, useEffect  } from 'react';
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
 
 export default function Post(props){
+    const [redirectFlag, setFlag] = useState(false);
     const sendToThread = () => {
         window.location = props.data.discussion;
     }
-    const openModal = () => {
-        props.modalToggle(props.data._id);
+    const triggerFlag = () => {
+        setFlag(!redirectFlag);
     }
     return (
         <Grid container item direction="row-reverse">
@@ -38,7 +40,10 @@ export default function Post(props){
             <Grid item xs={12} md={10}>
                 <div class="button-group">
                     <Button onClick={sendToThread}>View Thread</Button>
-                    <Button name={props.data._id} onClick={openModal}>Comments</Button>
+                    {redirectFlag ? (
+                        <Redirect to={"/comments/"+props.data._id}/>
+                        ) : (
+                        <Button name={props.data._id} onClick={triggerFlag}>Comments</Button>)}
                 </div>
             </Grid>
             
