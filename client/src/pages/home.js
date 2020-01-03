@@ -20,7 +20,7 @@ export default function Home(props){
         const queryPost = async () => {
             const query = await api.getPosts("http://old.reddit.com/r/todayilearned");
             if(query){
-                setPost(query.data);
+                setPost(query.data[0]);
                 console.log(query.data);
             }
         }
@@ -44,12 +44,14 @@ export default function Home(props){
     return (
         <Wrapper>
             <Grid container>
+                
                 {scrapedPost.length ? (
                     scrapedPost.map(i => (
                         <div className="postBody">
                             <Post
                                 key={i._id}
                                 data={i}
+                                listed={true}
                             />
                         </div>
                     ))

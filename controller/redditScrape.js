@@ -4,10 +4,7 @@ const db = require("../models");
 module.exports = {
     scrape: async (req, res) => {
         const modelLength = await db.ScrapedPost.count({});
-        console.log(modelLength);
-        console.log("CHEEEEEEEEEEEEEEEEEEEEEEEEEEEEECKKKKK");
         if(modelLength === 0){
-            console.log("HMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM");
             let response = await axios.get(req.query[0]);
             if (response) {
                 let $ = cheerio.load(response.data);

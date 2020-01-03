@@ -11,9 +11,11 @@ module.exports = {
         }
     },
     threadPost: async (req, res) => {
+        console.log("OOOOOOOOOOOOOOOOOHHHHHHHHHHHHHHHHHHHH SNAAAAAAAAAAAAAAAAAAP");
         console.log(req.params.id)
-        const result = await db.ScrapedPost.find({id: req.params.id});
+        const result = await db.ScrapedPost.find({_id: req.params.id});
         if(result) {
+            console.log(result);
             res.json(result);
         } else {
             res.sendStatus("504");

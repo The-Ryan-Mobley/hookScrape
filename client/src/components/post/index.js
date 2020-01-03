@@ -38,13 +38,15 @@ export default function Post(props){
                 
             </Grid>
             <Grid item xs={12} md={10}>
-                <div class="button-group">
-                    <Button onClick={sendToThread}>View Thread</Button>
-                    {redirectFlag ? (
-                        <Redirect to={"/comments/"+props.data._id}/>
-                        ) : (
-                        <Button name={props.data._id} onClick={triggerFlag}>Comments</Button>)}
-                </div>
+                {props.parent ? (
+                    <div class="button-group">
+                        <Button onClick={sendToThread}>View Thread</Button>
+                        {redirectFlag ? (
+                            <Redirect to={"/comments/"+props.data._id}/>
+                            ) : (
+                            <Button name={props.data._id} onClick={triggerFlag}>Comments</Button>)}
+                    </div>
+                ) : (<p></p>)}
             </Grid>
             
 

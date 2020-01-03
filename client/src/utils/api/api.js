@@ -4,11 +4,11 @@ export default {
         return axios.get("/api/scrape/", {params: url});
     },
     getPosts: (sub) => {
-        console.log("YOYOYO");
         return axios.get("/api/postRoute/", {params: sub})
     },
     loadPost: (postId) => {
-        return axios.get("api/postRoute/"+postId);
+        console.log("EYYYYYYYYYYY");
+        return axios.get("/api/postRoute/find/"+postId);
     },
     getComments: (postId) => {
         return axios.get("/api/comments/"+postId);

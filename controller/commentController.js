@@ -16,9 +16,8 @@ module.exports = {
         }
     },
     getComments: async (req, res) => {
-        console.log(req.params.id)
         const result = await db.Comments.find({postId: req.params.id});
-        console.log(result);
+        
         if(result) {
             res.json(result);
         } else {
