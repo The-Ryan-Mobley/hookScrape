@@ -7,6 +7,9 @@ export default {
         console.log("YOYOYO");
         return axios.get("/api/postRoute/", {params: sub})
     },
+    loadPost: (postId) => {
+        return axios.get("api/postRoute/"+postId);
+    },
     getComments: (postId) => {
         return axios.get("/api/comments/"+postId);
     },

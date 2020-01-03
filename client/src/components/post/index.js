@@ -1,5 +1,5 @@
 import React, { useState, useEffect  } from 'react';
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';

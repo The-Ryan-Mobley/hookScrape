@@ -9,7 +9,7 @@ import { STATES } from 'mongoose';
 export default function PostComment(props){
     const [newComment, newInput] = useState({name: "", body: "", postId: props.id})
     const [errorMessage, setError] = useState("");
-    
+
 
     
     const closeModal = () => {
@@ -29,7 +29,6 @@ export default function PostComment(props){
                 name: "",
                 body: ""
             });
-            queryComments();
 
         } else {
             setError("Something went wrong");

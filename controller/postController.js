@@ -9,5 +9,15 @@ module.exports = {
         } else {
             res.sendStatus("504");
         }
+    },
+    threadPost: async (req, res) => {
+        console.log(req.params.id)
+        const result = await db.ScrapedPost.find({id: req.params.id});
+        if(result) {
+            res.json(result);
+        } else {
+            res.sendStatus("504");
+        }
+
     }
 }
