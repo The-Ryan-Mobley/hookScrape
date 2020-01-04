@@ -95,7 +95,7 @@ export default function CommentThread(props){
                     className="sheetModal"
                     name="sheetModal"
                     open={modalFlag}
-                    onClose={closeToggle}
+                    onClose={modalControl}
                     closeAfterTransition
                     BackdropComponent={Backdrop}
                     BackdropProps={{
@@ -103,11 +103,10 @@ export default function CommentThread(props){
                     }}
                 >
                     <Fade in={modalFlag}>
-                        {errorMessage.length ? (<p>{errorMessage}</p>) : (<p></p>)}
                         <div className="modalBody">
                         <Grid item container xs={12} direction="column">
                             <Grid item container xs={12} direction="row-reverse">
-                                <Button onClick={closeModal}>X</Button>
+                                <Button onClick={modalControl}>X</Button>
                             </Grid>
                            <Grid item xs={12}>
                                 <TextField
@@ -135,7 +134,7 @@ export default function CommentThread(props){
                                     onChange={inputChangeHandler}
                                 />
                             </Grid>
-                            <Button onClick={submitComment} disabled={newComment.name, newComment.body}>Post</Button>
+                            <Button onClick={submitComment} disabled={!(newComment.name), !(newComment.body)}>Post</Button>
                         </Grid>
                         </div>
                     </Fade>

@@ -13,7 +13,9 @@ export default function Post(props){
     const triggerFlag = () => {
         setFlag(!redirectFlag);
     }
+    console.log("IM ALIVE")
     return (
+        
         <Grid container item direction="row-reverse">
             <Grid item xs={12} md={10}>
                 <a 
@@ -38,7 +40,7 @@ export default function Post(props){
                 
             </Grid>
             <Grid item xs={12} md={10}>
-                {props.parent ? (
+                {props.listed ? (
                     <div class="button-group">
                         <Button onClick={sendToThread}>View Thread</Button>
                         {redirectFlag ? (

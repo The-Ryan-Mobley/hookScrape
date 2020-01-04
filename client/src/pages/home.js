@@ -20,7 +20,7 @@ export default function Home(props){
         const queryPost = async () => {
             const query = await api.getPosts("http://old.reddit.com/r/todayilearned");
             if(query){
-                setPost(query.data[0]);
+                setPost(query.data);
                 console.log(query.data);
             }
         }
@@ -32,15 +32,7 @@ export default function Home(props){
             
         }
     },[postId])
-    const ModalToggle = (id) => {
-        setPostId(id);
-        setModal(!modalFlag);  
-    }
-    const closeToggle = () => {
-        setPostId("");
-        setModal(!modalFlag); 
-    }
-    
+
     return (
         <Wrapper>
             <Grid container>
