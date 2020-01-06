@@ -8,19 +8,16 @@ import Fade from '@material-ui/core/Fade';
 
 import Post from "../components/post";
 import Wrapper from "../components/wrapper";
+import Comment from "../components/comments";
+import CommentModal from "../components/commentModals";
 
 import api from "../utils/api/api";
 import { STATES } from 'mongoose';
 
 export default function CommentThread(props){
     const [comments, setComments] = useState([]);
-    const [newComment, newInput] = useState({name: "", body: "", postId: props.match.params.commentId})
-    const [errorMessage, setError] = useState("");
-    const [modalFlag, toggleFlag] = useState(false);
+    const [stateObj, setStateObj] = useState({postId: props.match.params.commentId, modalFlag: false, errorMessage: ""})
     const [postData, setData] = useState({});
-
-    
-
     const queryComments = async () => {
         const result = await api.getComments(props.match.params.commentId)
         if(result){
@@ -28,41 +25,30 @@ export default function CommentThread(props){
         }
     }
     const queryPost = async () => {
-        console.log(props.match.params.commentId);
         const result = await api.loadPost(props.match.params.commentId);
         if(result) {
-            console.log(result);
             setData(result.data[0]);
         }
     }
     useEffect( ()=> {
         queryComments();
         queryPost();
+        
     }, []);
-    
-    
-    const inputChangeHandler = (event) => {
-        newInput({
-            ...newComment,
-            [event.target.name]: event.target.value
+    const modalControl = (id) => {
+        console.log("TEH ID");
+        console.log(id);
+        setStateObj({
+            ...stateObj,
+            modalFlag: !stateObj.modalFlag,
+            postId: id
         });
-        console.log(newComment);
     }
-    const submitComment = async () => {
-        const result = await api.postComment(newComment);
-        if(result) {
-            newInput({
-                name: "",
-                body: ""
-            });
-            queryComments();
-
-        } else {
-            setError("Something went wrong");
-        }
-    }
-    const modalControl = () => {
-        toggleFlag(!modalFlag);
+    const modalClose = () => {
+        setStateObj({
+            ...stateObj,
+            modalFlag: !stateObj.modalFlag
+        })
     }
     return (
         <Wrapper>
@@ -75,18 +61,14 @@ export default function CommentThread(props){
                                 listed={false}
                             />
                         ) : (<p></p>)}
-                        <Button onClick={modalControl}>Leave a Comment</Button>
+                        <Button onClick={modalControl.bind(props.match.params.commentId)}>Leave a Comment</Button>
                     </div>
                     
                 </Grid>
                 <Grid item xs={12}>
+                    <h1>Discussion</h1>
                     {comments.length ? (comments.map(comment => (
-                        <div className="comment">
-                            <Grid item container xs={12} direction = "column">
-                                <p><strong>{comment.userName}:</strong><br/>
-                                {comment.body}</p>
-                            </Grid>
-                        </div>
+                        <Comment comment={comment} modalControl={modalControl} />
                     ))) : (<p></p>)}
                 </Grid>
                 <Modal
@@ -94,7 +76,7 @@ export default function CommentThread(props){
                     aria-describedby="transition-modal-description"
                     className="sheetModal"
                     name="sheetModal"
-                    open={modalFlag}
+                    open={stateObj.modalFlag}
                     onClose={modalControl}
                     closeAfterTransition
                     BackdropComponent={Backdrop}
@@ -102,41 +84,11 @@ export default function CommentThread(props){
                       timeout: 100,
                     }}
                 >
-                    <Fade in={modalFlag}>
-                        <div className="modalBody">
-                        <Grid item container xs={12} direction="column">
-                            <Grid item container xs={12} direction="row-reverse">
-                                <Button onClick={modalControl}>X</Button>
-                            </Grid>
-                           <Grid item xs={12}>
-                                <TextField
-                                    id="standard-multiline-static"
-                                    label="Name*"
-                                    defaultValue=""
-                                    fullWidth={true}
-                                    margin="normal"
-                                    variant="filled"
-                                    name="name"
-                                    onChange={inputChangeHandler}
-                                />
-                            </Grid>
-                            <Grid item xs={12}>
-                                <TextField
-                                    id="standard-multiline-static"
-                                    label="Comment*"
-                                    multiline
-                                    rows="5"
-                                    defaultValue=""
-                                    fullWidth={true}
-                                    margin="normal"
-                                    variant="filled"
-                                    name="body"
-                                    onChange={inputChangeHandler}
-                                />
-                            </Grid>
-                            <Button onClick={submitComment} disabled={!(newComment.name), !(newComment.body)}>Post</Button>
-                        </Grid>
-                        </div>
+                    <Fade in={stateObj.modalFlag}>
+                        <CommentModal 
+                            closeToggle = {modalClose}
+                            postId={stateObj.postId}
+                        />
                     </Fade>
                 </Modal>
             </Grid>

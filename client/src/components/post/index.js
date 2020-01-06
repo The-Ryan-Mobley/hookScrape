@@ -13,7 +13,6 @@ export default function Post(props){
     const triggerFlag = () => {
         setFlag(!redirectFlag);
     }
-    console.log("IM ALIVE")
     return (
         
         <Grid container item direction="row-reverse">

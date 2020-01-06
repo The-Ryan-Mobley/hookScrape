@@ -7,11 +7,9 @@ import api from "../../utils/api/api";
 import { STATES } from 'mongoose';
 
 export default function PostComment(props){
-    const [newComment, newInput] = useState({name: "", body: "", postId: props.id})
+    const [newComment, newInput] = useState({name: "", body: "", postId: props.postId})
     const [errorMessage, setError] = useState("");
 
-
-    
     const closeModal = () => {
         props.closeToggle();
     }
@@ -20,7 +18,6 @@ export default function PostComment(props){
             ...newComment,
             [event.target.name]: event.target.value
         });
-        console.log(newComment);
     }
     const submitComment = async () => {
         const result = await api.postComment(newComment);
@@ -68,7 +65,7 @@ export default function PostComment(props){
                     onChange={inputChangeHandler}
                 />
             </Grid>
-            <Button onClick={submitComment} disabled={newComment.name, newComment.body}>Post</Button>
+            <Button onClick={submitComment} disabled={!(newComment.name), !(newComment.body)}>Post</Button>
             </div>
         </Grid>
     )
