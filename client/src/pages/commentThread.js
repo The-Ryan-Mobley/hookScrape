@@ -65,7 +65,7 @@ export default function CommentThread(props){
                     </div>
                     
                 </Grid>
-                <Grid item xs={12}>
+                <Grid item container xs={12} direction="column">
                     <h1>Discussion</h1>
                     {comments.length ? (comments.map(comment => (
                         <Comment comment={comment} modalControl={modalControl} />
