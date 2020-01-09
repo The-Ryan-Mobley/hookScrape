@@ -16,7 +16,11 @@ import { STATES } from 'mongoose';
 
 export default function CommentThread(props){
     const [comments, setComments] = useState([]);
-    const [stateObj, setStateObj] = useState({postId: props.match.params.commentId, modalFlag: false, errorMessage: ""})
+    const [stateObj, setStateObj] = useState({
+        postId: props.match.params.commentId, 
+        modalFlag: false, 
+        errorMessage: ""
+    })
     const [postData, setData] = useState({});
     const queryComments = async () => {
         const result = await api.getComments(props.match.params.commentId)
@@ -35,13 +39,11 @@ export default function CommentThread(props){
         queryPost();
         
     }, []);
-    const modalControl = (id) => {
-        console.log("TEH ID");
-        console.log(id);
+    const modalControl = (event) => {
         setStateObj({
             ...stateObj,
             modalFlag: !stateObj.modalFlag,
-            postId: id
+            postId: event.currentTarget.value
         });
     }
     const modalClose = () => {
@@ -61,7 +63,7 @@ export default function CommentThread(props){
                                 listed={false}
                             />
                         ) : (<p></p>)}
-                        <Button onClick={modalControl.bind(props.match.params.commentId)}>Leave a Comment</Button>
+                        <Button value={props.match.params.commentId} onClick={modalControl}>Leave a Comment</Button>
                     </div>
                     
                 </Grid>

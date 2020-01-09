@@ -20,7 +20,7 @@ export default function Comment(props){
         }
     }
     const modalControl = (event) => {
-        props.modalControl(event.currentTarget.value);
+        props.modalControl(event);
     }
     useEffect( () =>{
         queryReplies();

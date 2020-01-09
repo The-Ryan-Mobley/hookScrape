@@ -26,6 +26,7 @@ export default function PostComment(props){
                 name: "",
                 body: ""
             });
+            window.location.reload();
 
         } else {
             setError("Something went wrong");

@@ -10,10 +10,7 @@ import api from "./utils/api/api";
 
 function App() {
   useEffect(()=> {
-    const scrapeRun = async () => {
-      const result = await api.scrape("http://old.reddit.com/r/todayilearned");
-    }
-    scrapeRun();
+    
 
   },[]);
   

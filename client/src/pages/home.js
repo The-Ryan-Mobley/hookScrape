@@ -17,14 +17,21 @@ export default function Home(props){
     const [postId, setPostId] = useState("");
 
     useEffect(()=> {
+        const scrapeRun = async () => {
+            const result = await api.scrape("http://old.reddit.com/r/todayilearned");
+            if(result){
+                console.log(result);
+                queryPost();
+            }
+            
+        }
         const queryPost = async () => {
             const query = await api.getPosts("http://old.reddit.com/r/todayilearned");
             if(query){
                 setPost(query.data);
-                console.log(query.data);
             }
         }
-        queryPost();
+        scrapeRun();
     }, []);
     useEffect(()=>{
         if(postId.length) {
