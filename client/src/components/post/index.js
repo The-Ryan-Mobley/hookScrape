@@ -5,6 +5,7 @@ import { withStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
 
+
 export default function Post(props){
     const [redirectFlag, setFlag] = useState(false);
     const sendToThread = () => {

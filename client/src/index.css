@@ -73,5 +73,13 @@ code {
   -webkit-box-shadow: 3px 3px 8px 1px rgba(0,0,0,0.75);
   -moz-box-shadow: 3px 3px 8px 1px rgba(0,0,0,0.75);
   box-shadow: 3px 3px 8px 1px rgba(0,0,0,0.75);
-  margin-bottom: 2%;
+  margin-top: 1%;
+  margin-bottom: 1%;
+  overflow: auto;
+  
+}
+.topButton{
+  position: fixed;
+  bottom: 0;
+  right: 1%;
 }

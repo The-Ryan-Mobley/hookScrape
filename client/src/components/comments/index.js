@@ -35,17 +35,17 @@ export default function Comment(props){
                 <p><strong>{props.comment.userName}:</strong><br/>
                 {props.comment.body}</p>
                 <Button value={props.comment._id} onClick={modalControl.bind(props.comment._id)}>reply</Button>
-            </Grid>
-            <Grid item container xs={12}>
-                <Grid item xs={1}></Grid>
-                <Grid item xs={11}>
-                    {expandFlag ? (<Button onClick={expandReplies}>View {replies.length} Replies</Button>) : (
-                        <div className="replies">
-                            {replies.length ? (replies.map((reply, index)=>(
-                                <Comment key={index} comment = {reply} modalControl={props.modalControl}></Comment>
-                            ))) : (<p></p>)}
-                        </div>
-                    )}
+                <Grid item container xs={12}>
+                    <Grid item xs={1}></Grid>
+                    <Grid item xs={11}>
+                        {expandFlag ? (<Button onClick={expandReplies}>View {replies.length} Replies</Button>) : (
+                            <div className="replies">
+                                {replies.length ? (replies.map((reply, index)=>(
+                                    <Comment key={index} comment = {reply} modalControl={props.modalControl}></Comment>
+                                ))) : (<p></p>)}
+                            </div>
+                        )}
+                    </Grid>
                 </Grid>
             </Grid>
         </div>

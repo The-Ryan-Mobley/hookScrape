@@ -10,6 +10,7 @@ import Fade from '@material-ui/core/Fade';
 import Wrapper from "../components/wrapper";
 import Post from "../components/post";
 import CommentModal from "../components/commentModals";
+import TopButton from "../components/topButton";
 
 export default function Home(props){
     const [scrapedPost, setPost] = useState([]);
@@ -55,7 +56,7 @@ export default function Home(props){
                         </div>
                     ))
                 ) : (<p></p>)}
-
+                <TopButton/>
                 
             </Grid>
         </Wrapper>
