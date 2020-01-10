@@ -40,6 +40,17 @@ code {
   max-width: 100%;
   max-height: auto;
 }
+.userComments{
+  border-radius: 15px 50px 30px 5px;
+  border-style: solid;
+  border-width: 1%;
+  border-color: rgb(1, 128, 179, 0.5);
+  margin-bottom: 1%;
+  width: 100%;
+  background-color: #ffffff;
+  padding: 1%;
+  
+}
 .postBody{
   border-radius: 15px 50px 30px 5px;
   border-style: solid;
@@ -75,8 +86,11 @@ code {
   box-shadow: 3px 3px 8px 1px rgba(0,0,0,0.75);
   margin-top: 1%;
   margin-bottom: 1%;
-  overflow: auto;
-  
+}
+.reply{
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-color: #31373880;
 }
 .topButton{
   position: fixed;

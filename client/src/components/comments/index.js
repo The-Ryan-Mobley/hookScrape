@@ -30,8 +30,7 @@ export default function Comment(props){
         toggleFlag(!expandFlag);
     }
     return (
-        <div className="comment">
-            <Grid item container xs={12} direction = "column">
+            <Grid item container xs={12} direction = "column" justify = "flex-start" alignItems="flex-start">
                 <p><strong>{props.comment.userName}:</strong><br/>
                 {props.comment.body}</p>
                 <Button value={props.comment._id} onClick={modalControl.bind(props.comment._id)}>reply</Button>
@@ -41,14 +40,15 @@ export default function Comment(props){
                         {expandFlag ? (<Button onClick={expandReplies}>View {replies.length} Replies</Button>) : (
                             <div className="replies">
                                 {replies.length ? (replies.map((reply, index)=>(
+                                    <div className="reply">
                                     <Comment key={index} comment = {reply} modalControl={props.modalControl}></Comment>
+                                    </div>
                                 ))) : (<p></p>)}
                             </div>
                         )}
                     </Grid>
                 </Grid>
             </Grid>
-        </div>
             
     )
 }
