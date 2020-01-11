@@ -1,7 +1,6 @@
 import React, { useState, useEffect  } from 'react';
 import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
-import TextField from '@material-ui/core/TextField';
 import Modal from '@material-ui/core/Modal';
 import Backdrop from '@material-ui/core/Backdrop';
 import Fade from '@material-ui/core/Fade';
@@ -12,7 +11,6 @@ import Comment from "../components/comments";
 import CommentModal from "../components/commentModals";
 
 import api from "../utils/api/api";
-import { STATES } from 'mongoose';
 
 export default function CommentThread(props){
     const [comments, setComments] = useState([]);
