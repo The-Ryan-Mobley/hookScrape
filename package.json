@@ -23,5 +23,8 @@
   "bugs": {
     "url": "https://github.com/The-Ryan-Mobley/hookScrape/issues"
   },
-  "homepage": "https://github.com/The-Ryan-Mobley/hookScrape#readme"
+  "homepage": "https://github.com/The-Ryan-Mobley/hookScrape#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
 }
