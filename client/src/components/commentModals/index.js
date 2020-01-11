@@ -4,7 +4,6 @@ import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 
 import api from "../../utils/api/api";
-import { STATES } from 'mongoose';
 
 export default function PostComment(props){
     const [newComment, newInput] = useState({name: "", body: "", postId: props.postId})
