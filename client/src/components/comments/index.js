@@ -33,11 +33,11 @@ export default function Comment(props){
             <Grid item container xs={12} direction = "column" justify = "flex-start" alignItems="flex-start">
                 <p><strong>{props.comment.userName}:</strong><br/>
                 {props.comment.body}</p>
-                <Button value={props.comment._id} onClick={modalControl.bind(props.comment._id)}>reply</Button>
+                <Button color="primary" value={props.comment._id} onClick={modalControl.bind(props.comment._id)}>reply</Button>
                 <Grid item container xs={12}>
                     <Grid item xs={1}></Grid>
                     <Grid item xs={11}>
-                        {expandFlag ? (<Button onClick={expandReplies}>View {replies.length} Replies</Button>) : (
+                        {expandFlag ? (<Button color="primary" onClick={expandReplies}>View {replies.length} Replies</Button>) : (
                             <div className="replies">
                                 {replies.length ? (replies.map((reply, index)=>(
                                     <div className="reply">

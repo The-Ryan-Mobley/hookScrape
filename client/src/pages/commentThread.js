@@ -67,16 +67,18 @@ export default function CommentThread(props){
                     </div>
                     
                 </Grid>
-                <div className="userComments">
+                
                 <Grid item container xs={12} direction="column">
+                <div className="userComments">
                     <h1>Discussion</h1>
                     {comments.length ? (comments.map(comment => (
                         <div className="comment">
                         <Comment comment={comment} modalControl={modalControl} />
                         </div>
                     ))) : (<p></p>)}
+                    </div>
                 </Grid>
-                </div>
+                
                 <Modal
                     aria-labelledby="transition-modal-title"
                     aria-describedby="transition-modal-description"

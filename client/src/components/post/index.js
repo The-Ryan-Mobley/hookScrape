@@ -22,7 +22,7 @@ export default function Post(props){
                     className='headline' 
                     href={props.data.link}
                 >
-                    <strong>{props.data.Title}</strong>
+                    <strong className="titleLink">{props.data.Title}</strong>
                 </a>
                 <p className="author">Submitted by: {props.data.author}</p>
             </Grid>
