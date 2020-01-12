@@ -73,7 +73,7 @@ export default function CommentThread(props){
                         <div className="comment">
                         <Comment comment={comment} modalControl={modalControl} />
                         </div>
-                    ))) : (<p></p>)}
+                    ))) : (<p>Be the first to comment!</p>)}
                     </div>
                 </Grid>
                 
