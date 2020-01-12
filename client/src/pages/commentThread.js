@@ -61,7 +61,7 @@ export default function CommentThread(props){
                                 listed={false}
                             />
                         ) : (<p></p>)}
-                        <Button value={props.match.params.commentId} onClick={modalControl}>Leave a Comment</Button>
+                        <Button variant="outlined" value={props.match.params.commentId} onClick={modalControl}>Leave a Comment</Button>
                     </div>
                     
                 </Grid>

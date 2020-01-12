@@ -39,7 +39,7 @@ export default function Post(props){
                 </div>
                 
             </Grid>
-            <Grid item xs={12} md={10} justify="right">
+            <Grid item container xs={12} md={10} justify="flex-end">
                 {props.listed ? (
                     <div class="button-group">
                         <Button variant="outlined" onClick={sendToThread}>View Thread</Button>
