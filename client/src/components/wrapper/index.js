@@ -5,25 +5,17 @@ import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
 
 export default function Wrapper(props){
-    const [linkFlags, linkToggle] = useState({
-        sendHome: false,
-        toPorfolio: false,
-        toGit: false,
-        toLinkedIn: false
-    });
+    const [sendHome, linkToggle] = useState(false);
     const homeLink = (event) => {
-        linkToggle({
-            ...linkFlags,
-            [event.target.name] : !event.target.value
-        });
+        linkToggle(!sendHome);
     }
     return(
         <Box>
             <div className="wrapper">
                 <header>
                     <Grid container direction="row">
-                        <h1 name="sendHome" value={linkFlags.sendHome} className="title" onClick={homeLink}>Hook Scrape</h1>
-                        {linkFlags.sendHome ? (<Redirect to={"/"}/>) : (<p></p>)}
+                        <h1 className="title" onClick={homeLink}>Hook Scrape</h1>
+                        {sendHome ? (<Redirect to={"/"}/>) : (<p></p>)}
                     </Grid>
                 </header>
                 <Container>
