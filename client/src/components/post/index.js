@@ -39,14 +39,14 @@ export default function Post(props){
                 </div>
                 
             </Grid>
-            <Grid item xs={12} md={10}>
+            <Grid item xs={12} md={10} justify="right">
                 {props.listed ? (
                     <div class="button-group">
-                        <Button onClick={sendToThread}>View Thread</Button>
+                        <Button variant="outlined" onClick={sendToThread}>View Thread</Button>
                         {redirectFlag ? (
                             <Redirect to={"/comments/"+props.data._id}/>
                             ) : (
-                            <Button name={props.data._id} onClick={triggerFlag}>Comments</Button>)}
+                            <Button variant="outlined" name={props.data._id} onClick={triggerFlag}>Comments</Button>)}
                     </div>
                 ) : (<p></p>)}
             </Grid>
