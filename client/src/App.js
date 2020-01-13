@@ -5,6 +5,7 @@ import './App.css';
 
 import Home from "./pages/home";
 import Comments from "./pages/commentThread";
+import NotFound from "./pages/404";
 
 import api from "./utils/api/api";
 
@@ -20,6 +21,7 @@ function App() {
         <Switch>
           <Route exact path="/" component={Home}/>
           <Route exact path="/comments/:commentId" component={Comments}/>
+          <Route exact path="*" component={NotFound}/>
         </Switch>
 
       </Router>
