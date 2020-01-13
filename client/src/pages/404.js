@@ -12,7 +12,7 @@ import Comment from "../components/comments";
 import CommentModal from "../components/commentModals";
 
 export default function NotFound(){
-    const [goHome, setHome] = userState(false);
+    const [goHome, setHome] = useState(false);
     const sendHome = () => {
         setHome(!goHome);
     }
