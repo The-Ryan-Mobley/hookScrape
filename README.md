@@ -2,6 +2,7 @@
 Heroku Url https://powerful-cove-03486.herokuapp.com/
 
 ## About
+This is an improved version of a previous project I worked on before learning React. I used this project to expand upon the original and to test out recursive components using React Hooks.
 stuck in an awkward elevator ride and need some slightly interesting facts to make small talk? This website is just for you! this site 
 scrapes to trending section of reddit's 'todayilearned' or TIL subreddit. Avoid all the wierd ads disguised as post, and the pop ups
 about their app. The site does offer links to both the reddit thread, and the posted link; you can also leave comments by clicking
